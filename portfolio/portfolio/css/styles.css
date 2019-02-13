@@ -1,0 +1,116 @@
+body {
+    background-color:black;
+    color:gray;
+}
+
+header, main, nav, footer {
+    text-align: center;
+}
+footer{
+    clear:left;
+    text-align: center;
+    font-size: 1em;
+    color:#416baf;
+}
+header{
+    color:white;
+}
+h1{
+    font-family: 'Pacifico', cursive;
+    font-size: 4em;
+    margin-bottom: 0px;
+}
+div, figure{
+    float:left;
+}
+main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+table{
+    margin: 0px auto;
+}
+td{
+    padding-right: 10px;
+    font-size: 1.3em;
+}
+td strong{
+    color:orange;
+}
+ul{
+    text-align: left;
+    padding-left: 200px;
+}
+.hobby{
+ color: yellow;   
+}
+#mainIndex{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr
+}
+
+#aboutBody{
+    width:100%;
+    color: white;
+}
+#mainContact{
+    width: 100%;
+    display: flex;
+    flex: center;
+    justify-content: center;
+}
+#me{
+    align-content: right;
+    
+}
+#swayze{
+    place-self: center end;
+    padding-right: 15px;
+}
+
+.gridCont{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    width: 100%;
+    
+}
+#table-header{
+    background-color: #351a00;
+}
+.table-row{
+    background-color: #753900;
+}
+
+#me, #welcomeText {
+    float:left;
+}
+#welcomeText{
+    text-align: left;
+}
+
+#otterPup{
+    position: static;
+
+    max-height: 50%;
+    max-width: 50%;
+    justify-self: right;
+}
+
+
+nav a{ /* links within "nav" container */
+    padding:15px;
+    padding-bottom: 4px;
+    front-size: 1.8em;
+    text-decoration: none; /* removes underline */
+    color: white; /* by default, links are blue */
+}
+nav a:hover{
+    border-bottom: 2px orange solid;
+    font-size: 1.8em;
+    transition: .9s; /* transition effect */
+}
+.active-page{
+    border-bottom: 2px orange solid;
+    font-size: 1.8em;
+}

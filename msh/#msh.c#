@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include <time.h>
+
+#define MAXSTR 120
+
+void printTime(){
+    time_t rawtime;
+    struct tm *info;
+    char buffer[80];
+    time( &rawtime );
+    info = localtime( &rawtime );
+    strftime(buffer,80,"%x - %I:%M%p", info);
+    printf("Formatted date & time : |%s|\n", buffer );
+}
+
+bool readInput(char input[MAXSTR+3]){
+  int i=0;
+  int n = strlen(input)-1;
+  int wordStart = 0;
+  int wordEnd = 0;
+  char aWord[MAXSTR+3];
+  char exitString[] = "exit\n";
+
+  // Check for exit status                                           if(strcmp(input,exitString) == 0){
+    return true;
+  }else if(strcmp(input,"help")==0){
+      printf("enter Linux commands, or ‘exit’ to exit\n");
+  }else if(strcmp(input,"today")==0){
+	printTime();
+      }
+
+  // If not exit, tokenize
+  char s[256];
+  strcpy(s,input);
+  char* token = strtok(s, " ");
+  int numTokens = 0;
+  while (token) {
+    printf("token: %d\n", ++numTokens);
+    //printf("token: %s\n", token);
+    token = strtok(NULL, " ");
+  }
+
+  for(i;i<n;i++){
+    if(input[i]=='!'){
+      return true;
+    }
+    else{
+      printf("%c", input[i]);
+    }
+  }
+  printf("\n");
+  return false;
+}
+
+int main() {
+
+  char input[MAXSTR+3];
+  char throwAway[MAXSTR+3];
+
+  bool done = false;
+  int count = 0;
+
+  while(!done){
+    printf("msh> ");
+
+    bool exit = (fgets(input, MAXSTR+3, stdin)==NULL);
+    if(exit){
+      printf("\n");
+      return 0;
+    }
+    int n = strlen(input)-1;
+
+    if(n > MAXSTR){
+      printf("error: input too long\n");
+    }
+    if(!strchr(input, '\n')){
+      while(fgetc(stdin)!='\n');
+    }
+    //fgets(throwAway, MAXSTR+3, stdin);                                  
+
+    if(n < MAXSTR && readInput(input)){
+      done = true;
+    }
+  }
+  return 0;
+}
