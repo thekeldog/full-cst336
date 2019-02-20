@@ -1,0 +1,18 @@
+.testName{
+    color:red !important;
+
+    
+}
+#titleRow.row{
+    color: red;
+    justify-content: center;
+}
+#checkboxGroup{
+    flex-direction: column;
+}
+#question1{
+    border-color:black;
+    border: ridge;
+    border-radius: 5px;
+    padding: 15px;
+}
