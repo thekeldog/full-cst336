@@ -11,6 +11,7 @@
 #include <unistd.h>
 
 #include <stdbool.h>
+#include <fcntl.h>
 
 
 
@@ -62,6 +63,10 @@ void changeDir(char *path[MAX_TOKS]){
 
 int main(int argc, char *argv[]) {
   bool fileMode = false;
+  bool hasInputFile = false;
+  bool hasOutputFile = false;
+  char inputFileName[MAX_BUF];
+  char outputFileName[MAX_BUF];
   
   char *pos;
 
@@ -101,146 +106,104 @@ int main(int argc, char *argv[]) {
       fclose(file);
     } else{
       /* prompt for input */
-  
       printf(prompt);
   
       /* read input */
       status = fgets(s, MAX_BUF-1, stdin);
     }
   
-  
       /* exit if ^d or "exit" entered */
-  
       if (status == NULL || strcmp(s, "exit\n") == 0) {
-  
         if (status == NULL) {
-  
   	    printf("\n");
-  
         }
-  
         exit(EXIT_SUCCESS);
-  
       }
   
       /* remove any trailing newline */
-  
       if ((pos = strchr(s, '\n')) != NULL) {
-  
         *pos = '\0';
-  
       }
-  
-  
   
       /* break input line into tokens */
-  
       char *rest = s;
-  
       int i = 0;
-  
       while ((tok = strtok_r(rest, " ", &rest)) != NULL && i < MAX_TOKS) {
-  
         toks[i] = tok;
-  
         i++;
-  
       }
-  
       if (i == MAX_TOKS) {
-  
         fprintf(stderr, "main: too many tokens");
-  
         exit(EXIT_FAILURE);
-  
       }
-  
       toks[i] = NULL;
-  
-  
-  
-      /* do nothing if no tokens found in input */
-  
-      if (i == 0) {
-  
-        continue;
-  
-      }
       
       /* bash cd command*/
       if (strcmp(toks[0], "cd") == 0) {
         changeDir(toks);
         continue;
       }
-  
-      /* pwd command 
-      if (strcmp(toks[0], "pwd") == 0) {
-        printf("%s\n", getcwd(forPrints, MAX_BUF));
-      }
-      */
-  
-  
       /* if a shell built-in command, then run it */
-  
       if (strcmp(toks[0], "help") == 0) {
-  
         printf("enter a Linux command, or 'exit' to quit\n");
-  
         continue;
-  
       } 
   
       if (strcmp(toks[0], "today") == 0) {
-  
         time(&rawtime);
-  
         timeinfo = localtime(&rawtime);
-  
         printf("%02d/%02d/%4d\n", 1 + timeinfo->tm_mon, timeinfo->tm_mday, 1900 + timeinfo->tm_year);
-  
         continue;
-  
       }
-  
-  
-  
+
       /* otherwise fork a process to run the command */
-  
       int rc = fork();
-  
       if (rc < 0) {
-  
         fprintf(stderr, "fork failed\n");
-  
         exit(1);
-  
       }
   
       if (rc == 0) {
-  
         /* child process: run the command indicated by toks[0] */
-  
+          /* Test to see if there are any redirects in the arguments*/
+        int j = 0;
+        for(j; toks[j] != '\0'; j++){
+          //printf("check for redirects %s\n", toks[j]);
+          if(strcmp(toks[j],"<") == 0){
+            //printf("found input\n");
+            hasInputFile = true;
+            strcpy(inputFileName, toks[j+1]);
+            toks[j++] = NULL;
+          }
+          if(strcmp(toks[j],">") == 0){
+            //printf("found output\n");
+            strcpy(outputFileName, toks[j+1]);
+            hasOutputFile = true;
+            toks[j++] = NULL;
+          }
+        }
+        
+        if(hasInputFile){
+          int fd0 = open(inputFileName, O_RDONLY);
+          dup2(fd0, STDIN_FILENO);
+          close(fd0);
+        }
+        if(hasOutputFile){
+          int fd1 = creat(outputFileName, 0644);
+          dup2(fd1, STDOUT_FILENO);
+          close(fd1);
+        }
+        
         execvp(toks[0], toks);  
-  
         /* if execvp returns than an error occurred */
-  
         printf("msh: %s: %s\n", toks[0], strerror(errno));
-  
         exit(1);
-  
       } else {
-  
         // wait for command to finish running
-  
         wait(NULL);
-  
       }
       if (fileMode == true){
           break;
         } 
-  
     }
-    
-  
-
 }

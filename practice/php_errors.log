@@ -1,0 +1,18 @@
+[25-Feb-2019 22:41:19 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO), expecting ',' or ';' in /home/ubuntu/workspace/practice/phpPractice/basic.php on line 21
+[25-Feb-2019 22:41:35 UTC] PHP Fatal error:  Call to undefined function arraySum() in /home/ubuntu/workspace/practice/phpPractice/basic.php on line 18
+[25-Feb-2019 22:41:35 UTC] PHP Stack trace:
+[25-Feb-2019 22:41:35 UTC] PHP   1. {main}() /home/ubuntu/workspace/practice/phpPractice/basic.php:0
+[25-Feb-2019 22:42:09 UTC] PHP Fatal error:  Call to undefined function arraySum() in /home/ubuntu/workspace/practice/phpPractice/basic.php on line 19
+[25-Feb-2019 22:42:09 UTC] PHP Stack trace:
+[25-Feb-2019 22:42:09 UTC] PHP   1. {main}() /home/ubuntu/workspace/practice/phpPractice/basic.php:0
+[25-Feb-2019 22:42:58 UTC] PHP Fatal error:  Call to undefined function arraySum() in /home/ubuntu/workspace/practice/phpPractice/basic.php on line 19
+[25-Feb-2019 22:42:58 UTC] PHP Stack trace:
+[25-Feb-2019 22:42:58 UTC] PHP   1. {main}() /home/ubuntu/workspace/practice/phpPractice/basic.php:0
+[25-Feb-2019 22:43:44 UTC] PHP Fatal error:  Call to undefined function arraySum() in /home/ubuntu/workspace/practice/phpPractice/basic.php on line 19
+[25-Feb-2019 22:43:44 UTC] PHP Stack trace:
+[25-Feb-2019 22:43:44 UTC] PHP   1. {main}() /home/ubuntu/workspace/practice/phpPractice/basic.php:0
+[25-Feb-2019 22:44:09 UTC] PHP Fatal error:  Call to undefined function arraySum() in /home/ubuntu/workspace/practice/phpPractice/basic.php on line 16
+[25-Feb-2019 22:44:09 UTC] PHP Stack trace:
+[25-Feb-2019 22:44:09 UTC] PHP   1. {main}() /home/ubuntu/workspace/practice/phpPractice/basic.php:0
+[25-Feb-2019 22:49:26 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/ubuntu/workspace/practice/phpPractice/basic.php on line 16
+[25-Feb-2019 22:52:33 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/ubuntu/workspace/practice/phpPractice/basic.php on line 21

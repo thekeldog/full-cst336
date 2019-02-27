@@ -1,0 +1,12 @@
+.container{
+    margin: 5%;
+}
+#zipHelp{
+    color: red !important;
+}
+#submitButton{
+    margin-top: 15px;
+}
+#passHelp{
+    color: red !important;
+}

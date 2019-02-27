@@ -1,0 +1,110 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>AJAX: Sign Up Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="weatherStyle.css">
+</head>
+
+<body id="dummybodyid">
+    <h1> Sign Up Form </h1>
+    <div class="container">
+        <form>
+            <fieldset>
+                <legend>Sign Up</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <lable for="firstNameInput">First Name</lable>
+                        <input type="text" id="firstNameInput"class="form-control" placeholder="First name" required>
+                    </div>
+                    <div class="form-group col-md-6" required>
+                        <lable for="lastNameInput">Last Name</lable>
+                        <input type="text" id="lastNameInput" class="form-control" placeholder="Last name" required>
+                    </div>
+                </div>
+                 <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPhone">Phone Number</label>
+                        <input type="tel" class="form-control" id="inputPhone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="555-555-5555" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label id="zipLabel" for="inputZip">Zip</label>
+                        <input type="text" class="form-control" id="inputZip">
+                        <small id="zipHelp" class="form-text text-muted"></small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">City</label>
+                        <input type="text" class="form-control" id="inputCity">
+            
+                    </div>
+                </div>
+                <div class="form-row">
+                    <lable>Latitude: </lable>
+                    <div id="latitude"></div>
+                </div>
+                <div class="form-row">
+                    <label>Longitude: </label>
+                    <div id="longitude"></div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputState">State</label>
+                        <select id="inputState" class="form-control">
+                            <option id="chooseState" selected>Choose...</option>
+                            <option value="CA">CA</option>
+                            <option value="TX">TX</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputCounty">County</label>
+                        <select id="inputCounty" class="form-control">
+                        <option selected>Choose...</option>
+                        
+                      </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="inputAddress">Address</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" required>
+                        <label for="inputUsername">Desired Username</label>
+                        <input type="text" class="form-control" id="inputUsername">
+                        <small id="nameAvailable" class="form-text"></small>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-row">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                </div>
+                <div class="form-row">
+                    <label for="verifyPassword">Confirm Password</label>
+                    <input type="password" class="form-control" id="verifyPassword" placeholder="Confirm Password" required>
+                    <small id="passHelp" class="form-text text-muted"></small>
+                </div>
+                <button id="submitButton" type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="weather.js"></script>
+</body>
+
+</html>

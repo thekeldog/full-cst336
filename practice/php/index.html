@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        
+        <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous">
+        </script>
+        <script>
+            console.log("in Script");
+            $(document).ready(function() {
+                console.log("onready");
+                $.ajax({
+                type:"get",
+                url: "api.php",
+                dataType: "json",
+                data:{},
+                error: function(err) {
+                    console.log(err);
+                },
+                success: function(data){
+                    console.log(data);
+                },
+                complete: function(data, status){
+                    //console.log(status);
+                }
+               }); 
+            });
+        </script>
+    </body>
+</html>

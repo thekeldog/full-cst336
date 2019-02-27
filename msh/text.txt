@@ -1,1 +1,10 @@
-ls ..
+#msh.c#
+msh
+msh.c
+msh.c~
+oldmsh.c
+test
+test.c
+test.c~
+test.txt
+text.txt

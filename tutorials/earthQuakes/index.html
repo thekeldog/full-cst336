@@ -28,18 +28,17 @@
   	function getEarthquakes() {        
       $.ajax({
           type: "get",
-          url: "https://www.googleapis.com/customsearch/v1?key=AIzaSyBplWJdWiNt7uC8f5HFkC3DsvX_Tn0Sv3Q&cx=017576662512468239146:omuauf_lfve&q="+,
+          url: "https://www.googleapis.com/customsearch/v1?key=AIzaSyBplWJdWiNt7uC8f5HFkC3DsvX_Tn0Sv3Q&cx=010674911680597569189:_uibjvoie8u &q="+searchParam,
           dataType: "json",
-          data: {
-          },
+          data: {},
           success: function(data,status) {
             //$('#earthquakeResult').html(data["metadata"].title + "<br>");
             for (var i=0; i < data.items.length; i++ ) {
-              $('#earthquakeResult').append(data.items[i].title + '<br>');
+              $('#earthquakeResult').append(data.items[i].htmlSnippet + '<br>');
             }
           },
           complete: function(data,status) { //optional, used for debugging purposes
-            //console.log(status);
+            console.log(status);
           }
          });
     }
