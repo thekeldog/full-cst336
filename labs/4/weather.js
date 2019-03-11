@@ -31,12 +31,35 @@ $(document).ready(function() {
        }
    }
    function isValidUser(userName){
-       console.log("user names: " + userNames.length);
-       for(var i=0; i<userNames.length; i++) {
-           if(userName === userNames[i]) {
-               return false;
-           }
-       }
+       console.log("user name " + userName);
+       $.ajax({
+            type: "GET",
+            url: "./php/formAPI.php",
+            dataType: "json",
+            data: {"userName": userName},
+            success: function(data) {
+                if((data === undefined || data.length == 0) ){
+                    console.log('username available');
+                }else{
+                    if(data['username_available']===true){
+                        $('#nameAvailable').css("color","green");
+                        $('#nameAvailable').html("username available");
+                    }else{
+                        $('#nameAvailable').css("color","red");
+                        $('#nameAvailable').html("username unavailable");
+                        
+                    }
+                }
+            },
+            error: function(err) {
+                console.log(arguments);  
+            },
+            complete: function(data, status) {
+              // Called whether success or error
+              //console.log(status);
+            }
+        });
+       
        return true;
    }
    
@@ -46,6 +69,7 @@ $(document).ready(function() {
        let firstName = $('#firstNameInput').val();
        let lastName = $('#lastNameInput').val();
        let phoneNum = $('#inputPhone').val();
+       let userName = $('#inputUsername').val();
        if(firstName === ""){
            return false;
        }
@@ -69,13 +93,47 @@ $(document).ready(function() {
            
            return false;
        }
+       if ( password.includes(userName) ) {
+            $('#passHelp').html("Password cannot contain user name");
+            $('#passHelp').css("color","red");
+       }
        else{
             return true;
        }
    }
    
+   /**
+    * When first loading the page we will suggest a password to the user
+    * Update password field with auto-generated password
+    */
+    $.ajax({
+        type: "get",
+        url: "./php/formAPI.php",
+        dataType: "json",
+        data: { "password_suggest": true },
+        success: function(data) {
+            console.log(data);
+            $('#inputPassword').val(data);
+            $('#helpPassword').html("Here's a possible password");
+            $('small#password').show();
+        },
+        error: function(err) {
+            console.log(err);
+        },
+        complete: function(data, status) {
+            //updateLatLong(data);
+        }
+    });
+    // hides auto-gen password if modified
+   $('#inputPassword').keydown(function() {
+      $('#helpPassword').hide(); 
+   });
+  
+  
+   
    $('#inputUsername').change(function() {
        let userName = $('#inputUsername').val();
+       //let valid_user = 
        if(isValidUser(userName)) {
            $('#nameAvailable').css("color","green");
            $('#nameAvailable').html("username available");
@@ -91,7 +149,7 @@ $(document).ready(function() {
        $('#zipLabel').css("color","black");
        
        let zipEntered = $('#inputZip').val();
-       //console.log("zip :" + zipEntered);
+       console.log("zip :" + zipEntered);
        if( zipEntered !== "" && zipEntered.length === 5) {
            $.ajax({
                type: "get",
@@ -139,10 +197,39 @@ $(document).ready(function() {
     });
    
    $('#submitButton').on('click', function(e) {
+       
+       let forms = document.getElementsByClassName('needs-validation');
+       
+       
+       
        if(isValidSubmit()){
+           $.ajax({
+               type: "GET",
+               url: "./php/formAPI.php",
+               dataType: "json",
+               data: {"userName": userName, "password": password},
+               success: function(data) {
+                   console.log(data);
+                
+               },
+               error: function() {
+                   alert("I don't feel so well");
+               },
+               complete: function(data, status){
+                    //updateLatLong(data);
+                }
+               }); 
+           
         alert("Welcome to the team "+ $('#firstNameInput').val()+"!");
        }else{
            e.preventDefault();
+           let validation = Array.prototype.filter.call(forms, function(form) {
+           if (form.checkValidity() === false) {
+               
+            }
+            })
+           
+           
            return;
        }
    })
