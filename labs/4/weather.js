@@ -98,6 +98,7 @@ $(document).ready(function() {
             $('#passHelp').css("color","red");
        }
        else{
+           console.log("valid submit!");
             return true;
        }
    }
@@ -197,12 +198,13 @@ $(document).ready(function() {
     });
    
    $('#submitButton').on('click', function(e) {
-       
        let forms = document.getElementsByClassName('needs-validation');
-       
-       
+       console.log(isValidSubmit());
        
        if(isValidSubmit()){
+           let userName = $('#inputUsername').val();
+           let password = $("#inputPassword").val();
+          
            $.ajax({
                type: "GET",
                url: "./php/formAPI.php",
