@@ -1,0 +1,25 @@
+#navbarRow{
+    text-align: center;
+    font-size: 35px;
+}
+#pageTitle{
+    text-align: center;
+}
+#cardImage{
+    size: 50%;
+}
+.likeDislike{
+    font-size: 35px;
+}
+#buttonRow{
+    display: flex;
+    justify-content:space-around;
+}
+#historyHeader{
+    display: flex;
+    justify-content: space-around;
+}
+#matchHistoryRows{
+    display: flex;
+    justify-content: space-around;
+}
