@@ -14,11 +14,11 @@ function get_database_connection($dbname = "ottermart") {
     */
     
     if(strpos($_SERVER['HTTP_HOST'], 'herokuapp') !== false) {
-        $url = parse_url(getenv("mysql://sf1qzp17uzk5ms6f:p6n7qso52n2og7b7@bfjrxdpxrza9qllq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/lbkixx7usdyvo8hh"));
-        $host = $url["host"];
-        $dbname = substr($url["path"], 1);
-        $username = $url["user"];
-        $password = $url["pass"];
+       
+        $host = "bfjrxdpxrza9qllq.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+        $dbname = "lbkixx7usdyvo8hh";
+        $username = "sf1qzp17uzk5ms6f";
+        $password = "p6n7qso52n2og7b7";
     } 
 
     
