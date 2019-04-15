@@ -25,8 +25,10 @@ session_start();
 
     <body>
         <div>
-            <h1>Otter-Mart Product Search</h1>
-            
+            <header id="pageTop">
+                <h1>Otter-Mart Product Search</h1>
+                <button id="logOutButton" class="btn btn-primary">Logout</button>
+            </header>
             <form>
               Product: <input type="text" name="product" />
               <br>
@@ -45,26 +47,29 @@ session_start();
             <br>
             <button id="searchForm">Search</button>
         </div>
+        <div id="results"></div>
         
-        <div class="addProductDiv">
+        <!-- -->
+        <div id="addProductDiv">
             <h2>Add New Product</h2>
             <form id="newProductForm">
                 Product Name <input type="text" name="newProduct" />
                 <br>
-                Category: <select name='category'>
+                Category: <select name='selectCategory'>
                     <option value=''>Select One</option>
                 </select>
                 <br>
                 Price: <input type='text' name='newPrice' size='7' />
                 <br>
-                Description: <textarea rows="3" cols="50" name='newDescription'/>
+                Description: <textarea rows='3' cols='50' name='newDescription'></textarea>
                 <br>
                 Image Link: <input type='text' name='imgLink'/>
                 <br>
-                
             </form>
+            <br>
+            <button id="addItem">Add Item</button>
         </div>
-        <div id="results"></div>
+        
         
         <div class="modal" id="purchaseHistoryModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -105,16 +110,9 @@ session_start();
                     </div>
                 </div>
             </div>
-            <p id="productIdHolder"></p>
         </div>
+        <p id="productIdHolder"></p>
     </body>
     
 </html>
 
-<?php
- session_start();
- if($_SESSION['isAdmin'] == 1){
-     
- }
-
-?>

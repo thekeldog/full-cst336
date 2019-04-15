@@ -2,6 +2,17 @@
     background-color:red;
 }
 
-.addProductDiv{
-    display: none;
+#addProductDiv{
+    /*display: none;*/
+}
+#pageTop{
+    display:flex;
+    justify-content: space-between;
+}
+#logOutButton{
+    background-color: darkgray;
+    color: black;
+    border-color: black;
+    max-height: 80% !important;
+    max-width: 80% !important;
 }

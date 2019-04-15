@@ -36,17 +36,11 @@ require_once 'connection.php';
         $dbConn = get_database_connection();
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
   
-        $sql = "UPDATE om_product " .
-               "SET productName=:newName, productDescription = :newDesc, " .
-               "productImage = :newURL, price = :newPrice " .
+        $sql = "DELETE FROM om_product " .
                "WHERE productId = :productId";
         
         $stmt = $dbConn->prepare($sql);
-        $stmt->execute(array (":newName" => $_POST['newName'],
-                              ":newPrice" => $_POST['newPrice'],
-                              ":newDesc"=> $_POST['newDesc'],
-                              ":newURL"=> $_POST['newURL'],
-                              ":productId"=>$_POST['productId']));
+        $stmt->execute(array (":productId"=>$_POST['productId']));
 
   
         // Sending back down as JSON

@@ -37,6 +37,8 @@ $(document).ready( function () {
             data.forEach(function(key){
                 $("[name=category]").append("<option value="+key["catID"] +">"
                   +key["catName"] + "</option>"); 
+                $("[name=selectCategory]").append("<option value="+key["catID"] +">"
+                  +key["catName"] + "</option>"); 
                 });
               
         },
@@ -60,6 +62,7 @@ $(document).ready( function () {
            success: function(data, status){
                isAdmin = data['isAdmin'];
                
+               
                $("#results").html("<h3> Products Found: </h3>");
                data['products'].forEach(function(key){
                    $("#results").append("<a href='#' class='historyLink' id='"
@@ -80,38 +83,89 @@ $(document).ready( function () {
     
     $(document).on('click','.editLink', function(){
         $('#editProductModal').modal("show"); 
+        console.log($(this).attr("id"));
         $.ajax({
             type: "GET",
             url: "./api/getPurchaseHistory.php",
             dataType: "json",
             data: {"productId" : $(this).attr("id")},
             success: function(data, status){
+                console.log(data);
                 $('#productIdHolder').data('prodId', data[0]['productId']);
                 if(data.length !=0){
-                    $('#productIdHolder').html(data[0]['productId']);
+                    console.log("should display modal");
+                    $('#productIdHolder').data('prodId',data[0]['productId']);
                     $("#product").html("");
                     $("#product").append("Edit " + data[0]['productName'] + "<br/>");
                     $('#product').append("<img src='"+data[0]['productImage'] + "' width = '200' /><br/>");
                     data.forEach(function(key){
                         
-                        $("#product").append("Current Price: $" +key['unitPrice'] + " New Price: <input type='text' id='newPrice'><br/>");
-                        $("#product").append("Quantity: " + key['quantity'] +" New Quantity: <input type='text' id='newQuant'><br/>");
+                        $("#product").append("Current Price: $" +key['unitPrice'] + "<br>New Price: <input type='text' id='newPrice'><br/>");
+                        $("#product").append("Name: " + key['productName'] +"<br>New Name: <input type='text' id='newName'><br/>");
+                        $("#product").append("Description: " + key['productDescription'] +"<br>New Description: <input type='text' id='newDesc'><br/>");
+                        $("#product").append("Image URL: " + key['productImage'] +"<br>New URL: <input type='text' id='newURL'><br/>");
                     });
+                    
                 }else{
                     $("#product").html("Cannot edit this item.");
                 }
             }
-        })
+        });
     });
     
     $(document).on('click', '#updateProduct', function(){
-        console.log($('#productIdHolder').data('prodId'));
+        let newPrice = $('#newPrice').val();
+        let newName = $('#newQuant').val();
+        let newURL = $('#newURL').val();
+        let newDesc = $('#newDesc').val();
+        
+        $.ajax({
+            type: "POST",
+            url: "./api/editItem.php",
+            dataType: "json",
+            data: {"productId" : $('#productIdHolder').data('prodId'),
+                   "newPrice" : newPrice,
+                   "newName" : newName,
+                   "newURL" : newURL,
+                   "newDesc" : newDesc
+            },
+            success: function(data, status){
+                console.log(data);
+                if(data['success'] === true){
+                    if(confirm("Succesfully updated product")){
+                        return;
+                    }
+                }else{
+                    console.log("update failed");
+                }
+            }
+        });
+        
         
     });
     
     $(document).on('click', '#deleteButton', function(){
         if(confirm("Are you sure you want to delete this item?")){
             console.log($('#productIdHolder').data('prodId') + " will be deleted.");
+            $.ajax({
+            type: "POST",
+            url: "./api/deleteItem.php",
+            dataType: "json",
+            data: {"productId" : $('#productIdHolder').data('prodId'),
+                   
+            },
+            success: function(data, status){
+                console.log(data);
+                if(data['success'] === true){
+                    if(confirm("Succesfully deleted product")){
+                        return;
+                    }
+                }else{
+                    console.log("update failed");
+                }
+            }
+        });
+            
         }
         
     });
