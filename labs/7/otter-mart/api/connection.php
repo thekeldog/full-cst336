@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 function get_database_connection($dbname = "ottermart") {
     $host = "localhost"; //cloud 9
     $user_name = 'root';
