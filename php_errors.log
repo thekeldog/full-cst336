@@ -1,0 +1,12 @@
+[15-Apr-2019 21:23:33 UTC] PHP Parse error:  syntax error, unexpected ':' in /home/ubuntu/workspace/curl/api.php on line 8
+[15-Apr-2019 21:23:59 UTC] PHP Warning:  curl_setopt() expects exactly 3 parameters, 4 given in /home/ubuntu/workspace/curl/api.php on line 8
+[15-Apr-2019 21:23:59 UTC] PHP Stack trace:
+[15-Apr-2019 21:23:59 UTC] PHP   1. {main}() /home/ubuntu/workspace/curl/api.php:0
+[15-Apr-2019 21:23:59 UTC] PHP   2. curl_setopt() /home/ubuntu/workspace/curl/api.php:8
+[15-Apr-2019 21:48:49 UTC] PHP Parse error:  syntax error, unexpected '$cSession' (T_VARIABLE) in /home/ubuntu/workspace/curl/api.php on line 7
+[15-Apr-2019 21:57:47 UTC] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home/ubuntu/workspace/curl/api.php on line 22
+[15-Apr-2019 21:57:47 UTC] PHP Stack trace:
+[15-Apr-2019 21:57:47 UTC] PHP   1. {main}() /home/ubuntu/workspace/curl/api.php:0
+[15-Apr-2019 21:58:08 UTC] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home/ubuntu/workspace/curl/api.php on line 22
+[15-Apr-2019 21:58:08 UTC] PHP Stack trace:
+[15-Apr-2019 21:58:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/curl/api.php:0

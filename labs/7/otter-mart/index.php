@@ -25,10 +25,8 @@ session_start();
 
     <body>
         <div>
-            <header id="pageTop">
-                <h1>Otter-Mart Product Search</h1>
-                <button id="logOutButton" class="btn btn-primary">Logout</button>
-            </header>
+            <h1>Otter-Mart Product Search</h1>
+            
             <form>
               Product: <input type="text" name="product" />
               <br>
@@ -49,25 +47,24 @@ session_start();
         </div>
         <div id="results"></div>
         
-        <!-- -->
-        <div id="addProductDiv">
+        
+        <div class="addProductDiv">
             <h2>Add New Product</h2>
             <form id="newProductForm">
                 Product Name <input type="text" name="newProduct" />
                 <br>
-                Category: <select name='selectCategory'>
+                Category: <select name='category'>
                     <option value=''>Select One</option>
                 </select>
                 <br>
                 Price: <input type='text' name='newPrice' size='7' />
                 <br>
-                Description: <textarea rows='3' cols='50' name='newDescription'></textarea>
+                Description: <textarea rows="3" cols="50" name='newDescription'/>
                 <br>
                 Image Link: <input type='text' name='imgLink'/>
                 <br>
+                
             </form>
-            <br>
-            <button id="addItem">Add Item</button>
         </div>
         
         
