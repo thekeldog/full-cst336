@@ -10,3 +10,21 @@
 [15-Apr-2019 21:58:08 UTC] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in /home/ubuntu/workspace/curl/api.php on line 22
 [15-Apr-2019 21:58:08 UTC] PHP Stack trace:
 [15-Apr-2019 21:58:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/curl/api.php:0
+[08-May-2019 07:29:39 UTC] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/soccer_data/statistics.php on line 6
+[08-May-2019 07:29:39 UTC] PHP Stack trace:
+[08-May-2019 07:29:39 UTC] PHP   1. {main}() /home/ubuntu/workspace/soccer_data/statistics.php:0
+[08-May-2019 07:29:39 UTC] PHP Warning:  include(): Failed opening 'header.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/soccer_data/statistics.php on line 6
+[08-May-2019 07:29:39 UTC] PHP Stack trace:
+[08-May-2019 07:29:39 UTC] PHP   1. {main}() /home/ubuntu/workspace/soccer_data/statistics.php:0
+[08-May-2019 07:52:22 UTC] PHP Warning:  include(header.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/soccer_data/statistics.php on line 6
+[08-May-2019 07:52:22 UTC] PHP Stack trace:
+[08-May-2019 07:52:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/soccer_data/statistics.php:0
+[08-May-2019 07:52:22 UTC] PHP Warning:  include(): Failed opening 'header.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/soccer_data/statistics.php on line 6
+[08-May-2019 07:52:22 UTC] PHP Stack trace:
+[08-May-2019 07:52:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/soccer_data/statistics.php:0
+[08-May-2019 07:52:22 UTC] PHP Warning:  include(footer.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/soccer_data/statistics.php on line 42
+[08-May-2019 07:52:22 UTC] PHP Stack trace:
+[08-May-2019 07:52:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/soccer_data/statistics.php:0
+[08-May-2019 07:52:22 UTC] PHP Warning:  include(): Failed opening 'footer.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/soccer_data/statistics.php on line 42
+[08-May-2019 07:52:22 UTC] PHP Stack trace:
+[08-May-2019 07:52:22 UTC] PHP   1. {main}() /home/ubuntu/workspace/soccer_data/statistics.php:0

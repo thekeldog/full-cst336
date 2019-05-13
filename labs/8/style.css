@@ -1,0 +1,9 @@
+.like{
+    size: 20px;
+}
+.disLike{
+    size: 20px;
+}
+.card-deck{
+    flex-wrap:wrap;
+}

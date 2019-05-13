@@ -42,8 +42,6 @@ require_once 'connection.php';
         return;
       } 
       
-      
-      
       if (count($_POST["password"]) != 2) {
         echo json_encode(array(
           "success" => false,
@@ -75,11 +73,11 @@ require_once 'connection.php';
         $dbConn = get_database_connection();
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
   
-        $sql = "INSERT INTO om_user(email, password) " .
-               "VALUES (:email, :hashedPassword) ";
+        $sql = "INSERT INTO user(username, password) " .
+               "VALUES (:username, :hashedPassword) ";
         
         $stmt = $dbConn->prepare($sql);
-        $stmt->execute(array (":email" => $_POST['userName'],
+        $stmt->execute(array (":username" => $_POST['userName'],
                               ":hashedPassword" => $hashedPassword));
 
         $_SESSION["email"] = $record["email"];

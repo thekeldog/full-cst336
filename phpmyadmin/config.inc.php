@@ -46,6 +46,20 @@ $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = false;
 
 /**
+ * Soccer_dat heroku server
+ * /
+
+/* Authentication type */
+$i++;
+$cfg['Servers'][$i]['auth_type'] = 'config';
+/* Server parameters */
+$cfg['Servers'][$i]['host'] = 'x3ztd854gaa7on6s.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+$cfg['Servers'][$i]['user'] = 'udllv8c9u8gom2uq';
+$cfg['Servers'][$i]['password'] = 'sg46k7eh9eammrdl';
+$cfg['Servers'][$i]['compress'] = false;
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
+
+/**
  * phpMyAdmin configuration storage settings.
  */
 

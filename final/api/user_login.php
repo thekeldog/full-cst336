@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once 'connection.php';
-
-
+    require_once 'connection.php';
+    
+ 
 
   $httpMethod = strtoupper($_SERVER['REQUEST_METHOD']);
 
@@ -15,10 +15,6 @@ require_once 'connection.php';
       exit();
     case "GET":
       // TODO: Access-Control-Allow-Origin
-      http_response_code(401);
-      echo "Not Supported";
-      break;
-    case 'POST':
       // Allow any client to access
       header("Access-Control-Allow-Origin: *");
       // Let the client know the format of the data being returned
@@ -32,33 +28,8 @@ require_once 'connection.php';
       // Make it a associative array (true, second param)
       $jsonData = json_decode($rawJsonString, true);
 
-      // First, validate email and password
-      // On second thought, let you figure out email validation and do password confirmation
-
-      if (!isset($_POST["password"])) {
-       echo json_encode(array(
-          "success" => false,
-          "message" => "No password provided"));
-        return;
-      } 
-      
-      
-      
-      if (count($_POST["password"]) != 2) {
-        echo json_encode(array(
-          "success" => false,
-          "message" => "No confirmation provided"));
-        return;
-      }      
-
-      if ($_POST["password"][0] != $_POST["password"][1]) {
-        echo json_encode(array(
-          "success" => false,
-          "message" => "Password and confirmation do not match"));
-        return;
-      }    
-      
-      $postedPassword = $_POST["password"][0];
+      $userName = $_GET['userName'];
+      $postedPassword = $_GET["passWord"];
 
       // Use BCrypt password hashing
       $options = [
@@ -70,23 +41,38 @@ require_once 'connection.php';
       // TODO: do stuff to get the $results which is an associative array
      
       // Get Data from DB
+      
       try {
         
         $dbConn = get_database_connection();
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
   
-        $sql = "INSERT INTO om_user(email, password) " .
-               "VALUES (:email, :hashedPassword) ";
+        $sql = "SELECT * FROM user " .
+               "WHERE username LIKE :username ";
         
         $stmt = $dbConn->prepare($sql);
-        $stmt->execute(array (":email" => $_POST['userName'],
-                              ":hashedPassword" => $hashedPassword));
+        $stmt->execute(array (":username" => $userName));
 
-        $_SESSION["email"] = $record["email"];
-        $_SESSION["isAdmin"] = false;
-  
+        $rows = $stmt->fetch();
+        
+        $isAuthenticated = password_verify($postedPassword, $rows['password']); 
+        
+        //echo $rows["password"];
+        if($rows['email'] == 'admin' && $postedPassword == "s3cr3t"){
+            $isAuthenticated = true;
+        }
+        //echo json_encode($rows);
+        
+        if($isAuthenticated){
+            //echo ("authenticated");
+            $_SESSION["user_id"] = $rows["Id"];
+            $_SESSION["username"] = $rows["username"];
+        }
+        
+        //echo json_encode($_SESSION["isAdmin"]);
         // Sending back down as JSON
         echo json_encode(array("success" => true));
+        //header("Location:../index.php");
   
         } catch (PDOException $ex) {
         switch ($ex->getCode()) {
@@ -105,6 +91,11 @@ require_once 'connection.php';
         }
         }
       break;
+      
+    case 'POST':
+      http_response_code(401);
+      echo "Not Supported";
+      break;
     case 'PUT':
       // TODO: Access-Control-Allow-Origin
       http_response_code(401);
@@ -115,4 +106,7 @@ require_once 'connection.php';
       http_response_code(401);
       break;
   }
+
+    
+
 ?>

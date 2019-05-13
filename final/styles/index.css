@@ -1,0 +1,24 @@
+#logoutButton{
+    float: right;
+    margin: 15px;
+}
+#inviteLink{
+    margin-left: 10px;
+}
+#inviteRow{
+    margin-bottom: 20px;
+    align-content: center;
+}
+#selectDate{
+    margin-left: 5px;
+}
+#startTime{
+    margin-left: 5px;
+} 
+#endTime{
+    margin-left: 5px;
+}
+#addAppForm{
+    align-content: center !important;    
+    justify-content: center !important;
+}

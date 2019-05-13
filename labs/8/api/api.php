@@ -1,6 +1,12 @@
 <?php
     session_start();
     require_once 'curler.php';
+    
+    require __DIR__ . '/../../../vendor/autoload.php';
+
+    $log = new Monolog\Logger('testing');
+    $log->pushHandler(new Monolog\Handler\StreamHandler(__DIR__ . '/../../../vendor/monolog/app.log', Monolog\Logger::INFO));
+    $log->info('I am inside the upload file form stuff');
 
     $httpMethod = strtoupper($_SERVER['REQUEST_METHOD']);
     
@@ -33,8 +39,25 @@
       $pixa_url = "https://pixabay.com/api/";
 
       $return = make_curl($pixa_api_key, $search_params, $pixa_url);
-
-      echo $return;
+      
+      $json = json_decode($return, true);
+      
+      echo('<div class="card-deck">');
+      foreach($json['hits'] as $result) {
+      echo('
+        <div class ="card p-3">
+        <div class="card text-white bg-dark" style="width: 18rem;"> 
+        <img class="card-img-top" src="'.$result['previewURL'].'" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">'.$result['tags'].'</p>
+          <button id="'.$result['id'].'" search = "'.$search_params[0].'" value = "'.$result['previewURL'].'"type="submit" class="btn btn-primary favorite-button" style = "color:black; border:black;">Favorite</button>
+        </div>
+        </div>
+        </div>
+      ');
+    }
+    echo('</div>');
+      //echo $return;
         
       break;
      

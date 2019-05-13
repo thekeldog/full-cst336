@@ -3,5 +3,9 @@
      "php artisan clear-compiled",
      "php artisan optimize",
      "chmod -R 777 public/"
- ]
+ ],
+ "require": {
+        "monolog/monolog": "1.0.*"
+    }
+ 
 }

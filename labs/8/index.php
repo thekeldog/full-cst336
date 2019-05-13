@@ -2,7 +2,7 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href='./style.css' rel='stylesheet' type='text/css' />
-        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         
        
     
@@ -18,70 +18,8 @@
           <button type="submit" id="searchButton" class="btn btn-primary">Search</button>
         </form>
         </div>
-        
-        <div class="container">
-            <div class="row" id='row1'>
-                <div class="col">
-                    <div class="card">
-                      <img src="http://www.onegoodshare.com/wp-content/uploads/miley-cyrus-funny-face.jpeg" class="card-img-top" alt="face">
-                      <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                      <img src="http://www.onegoodshare.com/wp-content/uploads/miley-cyrus-funny-face.jpeg" class="card-img-top" alt="face">
-                      <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                      <img src="http://www.onegoodshare.com/wp-content/uploads/miley-cyrus-funny-face.jpeg" class="card-img-top" alt="face">
-                      <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="row" id="row2">
-                <div class="col">
-                    
-                </div>
-                <div class="col">
-                    <div class="card">
-                      <img src="http://www.onegoodshare.com/wp-content/uploads/miley-cyrus-funny-face.jpeg" class="card-img-top" alt="face">
-                      <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      </div>
-                    </div>
-                </div>
-                <div class="col">
-                    
-                </div>
-            </div>
-            <div class="row" id="row3">
-                <div class="col">
-                    
-                </div>
-                <div class="col" id="33">
-                    
-                </div>
-                <div class="col">
-                    <div class="card">
-                      <img src="http://www.onegoodshare.com/wp-content/uploads/miley-cyrus-funny-face.jpeg" class="card-img-top" alt="face">
-                      <div class="card-body">
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            
-            
-            
+        <div class=".container-fluid" style="padding:20px;width:64rem">
+                <div id="cardContainer"></div>
         </div>
         
          <script
