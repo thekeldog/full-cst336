@@ -51,6 +51,7 @@
             </div>
             
         </div>
+        <div class ="row" id="deleteModal"></div>
         
 
         <!-- Modal -->
@@ -81,7 +82,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Add</button>
+                <button class="btn btn-primary" class="btn btn-primary" id="addAppBut">Add</button>
               </div>
             </div>
           </div>
