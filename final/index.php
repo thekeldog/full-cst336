@@ -25,7 +25,9 @@
         <div class = "container">
             <div class="row">
                 <h1>The Scheduler App</h1>
-                <p>App running on Heroku at: </p>
+                <br>
+                <p>App running on Heroku at: https://cst336-root.herokuapp.com/final/login.php</p>
+                <p>login page doesn't properly call database on heroku</p>
             </div>
             <br>
             <div class ="row" id="inviteRow">
