@@ -5,6 +5,7 @@ $(document).ready(function(){
       
       let userName = $('#userName').val();
       let userPassword = $('#userPassword').val();
+      console.log(userName+userPassword)
       
        $.ajax({
                 type: "GET",
