@@ -25,6 +25,7 @@
         <div class = "container">
             <div class="row">
                 <h1>The Scheduler App</h1>
+                <p>App running on Heroku at: </p>
             </div>
             <br>
             <div class ="row" id="inviteRow">
